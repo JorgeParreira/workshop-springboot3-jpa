@@ -1,9 +1,7 @@
 package com.cursoudemy.course.services;
 
 import com.cursoudemy.course.entities.Order;
-import com.cursoudemy.course.entities.User;
 import com.cursoudemy.course.repositories.OrderRepository;
-import com.cursoudemy.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
