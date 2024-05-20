@@ -1,13 +1,7 @@
 package com.cursoudemy.course.config;
 
-import com.cursoudemy.course.entities.Category;
-import com.cursoudemy.course.entities.Order;
-import com.cursoudemy.course.entities.Product;
-import com.cursoudemy.course.entities.User;
-import com.cursoudemy.course.repositories.CategoryRepository;
-import com.cursoudemy.course.repositories.OrderRepository;
-import com.cursoudemy.course.repositories.ProductRepository;
-import com.cursoudemy.course.repositories.UserRepository;
+import com.cursoudemy.course.entities.*;
+import com.cursoudemy.course.repositories.*;
 import com.educandoweb.course.entities.enums.OrderStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -29,6 +23,9 @@ public class TestConfig implements CommandLineRunner {
     private CategoryRepository categoryRepository;
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
 
     @Override
@@ -67,6 +64,13 @@ public class TestConfig implements CommandLineRunner {
         // Grava os users numa lista sem ter de criar uma nova arrayList e adicionar os users um a um
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+
+        OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+        OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+        OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+        OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+
+        orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
 
     }
