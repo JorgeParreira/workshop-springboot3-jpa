@@ -1,5 +1,6 @@
 package com.cursoudemy.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -8,6 +9,14 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_payment")
 public class Payment  implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Instant moment;
+    @JsonIgnore
+    @OneToOne
+    @MapsId
+    private Order order;
 
     public Payment() {
     }
@@ -17,13 +26,6 @@ public class Payment  implements Serializable {
         this.moment = moment;
         this.order = order;
     }
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Instant moment;
-    @OneToOne
-    @MapsId
-    private Order order;
 
     public Long getId() {
         return id;
